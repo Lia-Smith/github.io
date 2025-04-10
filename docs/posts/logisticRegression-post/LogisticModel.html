@@ -212,14 +212,22 @@ background-size: cover;
 
 
 
-<div id="cell-1" class="cell" data-execution_count="23">
+<section id="logistic.py-link" class="level3">
+<h3 class="anchored" data-anchor-id="logistic.py-link">logistic.py link</h3>
+<p>https://github.com/Lia-Smith/github.io/blob/main/posts/logisticRegression-post/logistic.py</p>
+</section>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>This blog posts implements logistic regression with momentum gradient descent. I perform experiments comparing the number of steps momentum and vanilla gradient descent take to converge for a randomly generated dataset and a breast cancer classification data set. Additionally, I experiment with overfitting to understand the affects it has on test data outcomes. Finally, I fit the breast cancer test data to see how well the model performs on the dataset.</p>
+<div id="cell-3" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> logistic <span class="im">import</span> LogisticRegression, GradientDescentOptimizer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="experimental-data" class="level1">
 <h1>Experimental data</h1>
-<div id="cell-3" class="cell" data-execution_count="8">
+<div id="cell-5" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> classification_data(n_points <span class="op">=</span> <span class="dv">300</span>, noise <span class="op">=</span> <span class="fl">0.2</span>, p_dims <span class="op">=</span> <span class="dv">2</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -231,10 +239,11 @@ background-size: cover;
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, y</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> classification_data(noise <span class="op">=</span> <span class="fl">0.5</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#C:\Users\liapu\OneDrive\Documents\GitHub\github.io\posts\logisticRegression-post\LogisticModel.ipynb</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="9">
+<div id="cell-6" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_bias(X):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">        Adds a column of ones to X to account for the intercept term :D.</span></span>
@@ -251,7 +260,7 @@ background-size: cover;
 </div>
 <section id="check-implementation" class="level3">
 <h3 class="anchored" data-anchor-id="check-implementation">Check Implementation</h3>
-<div id="cell-6" class="cell">
+<div id="cell-8" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> LogisticRegression() </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> GradientDescentOptimizer(LR)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -265,7 +274,7 @@ background-size: cover;
 </section>
 <section id="vanilla-gradient-descent" class="level3">
 <h3 class="anchored" data-anchor-id="vanilla-gradient-descent">Vanilla Gradient Descent</h3>
-<div id="cell-8" class="cell">
+<div id="cell-10" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -299,7 +308,7 @@ background-size: cover;
 </section>
 <section id="gradient-descent-with-momentum" class="level2">
 <h2 class="anchored" data-anchor-id="gradient-descent-with-momentum">Gradient Descent with Momentum</h2>
-<div id="cell-10" class="cell" data-execution_count="12">
+<div id="cell-12" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> LogisticRegression() </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> GradientDescentOptimizer(LR)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -349,7 +358,7 @@ background-size: cover;
 </section>
 <section id="overfitting" class="level2">
 <h2 class="anchored" data-anchor-id="overfitting">Overfitting</h2>
-<div id="cell-13" class="cell" data-execution_count="13">
+<div id="cell-15" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># two identicle parameter data sets</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>LR_overfit <span class="op">=</span> LogisticRegression() </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>opt_overfit <span class="op">=</span> GradientDescentOptimizer(LR_overfit)</span>
@@ -388,7 +397,7 @@ testing accuracy : 0.8587407469749451</code></pre>
 <h2 class="anchored" data-anchor-id="introduction-to-the-data">Introduction to the Data</h2>
 <p>The Breast Cancer dataset contains variables derived from digitalized images of a fine needle aspirate (FNA) of a breast mass. The features describe characteristics of the cell nuclie present in the image. This data was compiled from Wisconsin patients. The column diagnosis is a categorical variable with two levels, benign and malignant, which describe whether the mass is benign or malignant. Other variables are continuous variables delineating the various features of the digitized images such as worst_radius of the mass, etc. With this data, I aim to create a model to classify the data using logistic regression with momemtum in gradient descent. Unfortunately I was unable to find the cite the data is originally from.</p>
 <p>Wolberg, William, W. Street, and Olvi Mangasarian. “Breast Cancer Wisconsin (Prognostic).” UCI Machine Learning Repository, 1995, https://doi.org/10.24432/C5GK50.</p>
-<div id="cell-17" class="cell" data-execution_count="3">
+<div id="cell-19" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#reading in the data</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>breast_cancer <span class="op">=</span> pd.read_csv(<span class="st">"C:/Users/liapu/OneDrive/Desktop/Fall 2024/breast-cancer.csv"</span>)</span>
@@ -561,7 +570,7 @@ testing accuracy : 0.8587407469749451</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="18">
+<div id="cell-20" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 60% train, 20% val, 20% test (using skit learn :O )</span></span>
@@ -572,7 +581,7 @@ testing accuracy : 0.8587407469749451</code></pre>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>add_bias(X_test)<span class="op">;</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>add_bias(X_val)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="19">
+<div id="cell-21" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#no momentum</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cross_entropy_loss <span class="op">=</span> []</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>steps <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">1001</span>)</span>
@@ -584,7 +593,7 @@ testing accuracy : 0.8587407469749451</code></pre>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> LR.loss(X_train, y_train)</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    cross_entropy_loss.append(loss)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="20">
+<div id="cell-22" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a> <span class="co">#momentum</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>LR <span class="op">=</span> LogisticRegression() </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> GradientDescentOptimizer(LR)</span>
@@ -629,7 +638,7 @@ testing accuracy : 0.8587407469749451</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="21">
+<div id="cell-23" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#validation loss w momentum/ no momentum</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> <span class="co">#momentum</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>LR_val <span class="op">=</span> LogisticRegression() </span>
@@ -687,7 +696,7 @@ testing accuracy : 0.8587407469749451</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="22">
+<div id="cell-24" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test set evaluation/model loss</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> LR.loss(X_test, y_test)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"loss : </span><span class="sc">{</span>loss<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -706,6 +715,10 @@ testing accuracy : 0.8587407469749451</code></pre>
 accuracy : 0.9666666388511658</code></pre>
 </div>
 </div>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
+<p>In this notebook, I utilized my own implementation of logistic regression to compare gradient descent with and without momentum, simulate overfitting to the data, and fit the model to an actual dataset. My model performs extremely well on this dataset, without being too computationally expensive. Logistic regression is a simple machine learning algorithm that performs well on binary classification tasks.</p>
 
 
 </section>
