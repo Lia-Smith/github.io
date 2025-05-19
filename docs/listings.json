@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/kernal-methods-post/sparse-kernel-machines.html",
+      "/posts/Overfitting-Overparameterization-blog-post/Overfitting.html",
+      "/posts/palmer-penuins-blog-post/PalmerPenguins.html",
       "/posts/logisticRegression-post/LogisticModel.html",
       "/posts/new-new-test-post/index.html",
       "/posts/new-test-post/index.html",
