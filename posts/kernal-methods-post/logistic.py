@@ -156,7 +156,7 @@ class KernelLogisticRegression:
     def loss(self, X, y):
         """
         Computes the L1-regularized cross-entropy loss for kernel logistic regression:
-            L(a) = -1/m * summation [y log(sigma(s)) + (1 - y) log(1 - sigma(s))] + λ‖a‖₁
+            L(a) = -1/m * summation [y log(sigma(s)) + (1 - y) log(1 - sigma(s))] + lambda||a||
 
         Args:
             X (torch.Tensor): Feature matrix of shape (m, p)
