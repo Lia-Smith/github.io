@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/advanced-optimization-post/optimization.html",
       "/posts/kernal-methods-post/sparse-kernel-machines.html",
       "/posts/Overfitting-Overparameterization-blog-post/Overfitting.html",
       "/posts/palmer-penuins-blog-post/PalmerPenguins.html",
