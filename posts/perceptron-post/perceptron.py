@@ -1,19 +1,5 @@
 import torch
 
-torch.manual_seed(1234)
-
-def perceptron_data(n_points=300, noise=0.2):
-    y = torch.arange(n_points) >= int(n_points / 2)
-    X = y[:, None] + torch.normal(0.0, noise, size=(n_points, 2))
-    X = torch.cat((X, torch.ones((X.shape[0], 1))), 1)
-
-    # Convert y from {0, 1} to {-1, 1}
-    y = 2 * y - 1
-
-    return X, y
-
-X, y = perceptron_data(n_points=300, noise=0.2)
-
 class LinearModel:
     def __init__(self):
         self.w = None

@@ -116,7 +116,7 @@
     "href": "posts/kernal-methods-post/sparse-kernel-machines.html",
     "title": "Kernel Logistic Regression",
     "section": "",
-    "text": "from logistic import KernelLogisticRegression"
+    "text": "from logistic import KernelLogisticRegression\nlogistic implementation link: https://github.com/Lia-Smith/github.io/blob/main/posts/kernal-methods-post/logistic.py"
   },
   {
     "objectID": "posts/kernal-methods-post/sparse-kernel-machines.html#changing-gamma",
